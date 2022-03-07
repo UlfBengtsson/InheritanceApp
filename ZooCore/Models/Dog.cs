@@ -19,5 +19,9 @@ namespace ZooCore.Models
             Breed = breed;
         }
 
+        public override string Info()
+        {
+            return $"-- Dog --\nBreed: {Breed}\nName: {Name}\nChip: {ChipId}\n";
+        }
     }
 }

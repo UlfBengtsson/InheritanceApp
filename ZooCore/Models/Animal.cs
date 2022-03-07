@@ -2,7 +2,7 @@
 
 namespace ZooCore.Models
 {
-    public class Animal
+    public abstract class Animal
     {
         public string Name { get; set; }
 
@@ -43,6 +43,8 @@ namespace ZooCore.Models
                 );
             return $"Age: {age.Year}";
         }
+
+        public abstract string Info();
 
         public override string ToString()
         {

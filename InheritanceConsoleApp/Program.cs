@@ -21,7 +21,7 @@ namespace InheritanceConsoleApp
 
             foreach (Animal item in animals)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(item.Info());
             }
         }
     }

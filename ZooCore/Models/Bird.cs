@@ -13,5 +13,10 @@ namespace ZooCore.Models
             WingSpan = wingSpan;
             CanFly = canFly;
         }
+
+        public override string Info()
+        {
+            return $"-- Bird --\nName: {Name}\nWing span: {WingSpan}\n{(CanFly ? "Can fly" : "Can not fly")}\n";
+        }
     }
 }
