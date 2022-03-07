@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using ZooCore.Models;
+using ZooCore.Utilitys;
 
 namespace InheritanceConsoleApp
 {
@@ -21,8 +22,15 @@ namespace InheritanceConsoleApp
 
             foreach (Animal item in animals)
             {
-                Console.WriteLine(item.Info());
+                Console.WriteLine(item);
+            }
+
+            foreach (Bird item in ZooUtil.FilterToOnlyBirds(animals))
+            {
+                Console.WriteLine(item);
             }
         }
+
+
     }
 }

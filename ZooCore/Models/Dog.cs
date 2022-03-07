@@ -23,5 +23,6 @@ namespace ZooCore.Models
         {
             return $"-- Dog --\nBreed: {Breed}\nName: {Name}\nChip: {ChipId}\n";
         }
+
     }
 }
