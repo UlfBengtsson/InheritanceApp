@@ -9,26 +9,55 @@ namespace ZooCore.Tests.Utilitys
 {
     public class ZooUtilTests
     {
-        [Fact]
-        public void FilterOutJustDogs()
+        public static IEnumerable<object[]> DogCountedLists()
         {
-            //Arrange
-            List<Animal> animals = new List<Animal>()
+            yield return new object[]
             {
-                new Dog(1,"Blizten1", "2000-01-01","ASD323"),
-                new Bird(1,"Blizten2", "2000-01-01",12,true),
-                new Dog(1,"Blizten3", "2000-01-01","ASD323"),
-                new Bird(1,"Blizten4", "2000-01-01",12,true),
-                new Dog(1,"Blizten5", "2000-01-01","ASD323")
+                new List<Animal>()
+                {   //animals
+                    new Dog(1,"Blizten1", "2000-01-01","ASD323"),
+                    new Bird(1,"Blizten2", "2000-01-01",12,true),
+                    new Dog(1,"Blizten3", "2000-01-01","ASD323"),
+                    new Bird(1,"Blizten4", "2000-01-01",12,true),
+                    new Dog(1,"Blizten5", "2000-01-01","ASD323")
+                },
+                3   //expectedCount
             };
+
+            yield return new object[]
+            {
+                new List<Animal>()
+                {   //animals
+                    new Bird(1,"Blizten2", "2000-01-01",12,true),
+                    new Bird(1,"Blizten4", "2000-01-01",12,true)
+                },
+                0   //expectedCount
+            };
+
+            yield return new object[]
+            {
+                new List<Animal>()
+                {   //animals
+                    new Dog(1,"Blizten1", "2000-01-01","ASD323"),
+                    new Dog(1,"Blizten3", "2000-01-01","ASD323"),
+                    new Dog(1,"Blizten5", "2000-01-01","ASD323")
+                },
+                3   //expectedCount
+            };
+        }
+
+        [Theory]
+        [MemberData(nameof(DogCountedLists))]
+        public void FilterOutJustDogs(List<Animal> animals, int expectedCount)
+        {
+            //Arrange - MembersData
 
             //Act
             var result = ZooUtil.FilterToOnlyDogs(animals);
 
             //Assert
             Assert.IsType<List<Dog>>(result);
-            Assert.Equal(3, result.Count);
-            //Assert.True(result.Count == 3);
+            Assert.Equal(expectedCount, result.Count);
         }
     }
 }
