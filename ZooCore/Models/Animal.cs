@@ -17,6 +17,10 @@ namespace ZooCore.Models
             get { return death; }
             set
             {
+                if (value < Birth)
+                {
+                    throw new ArgumentException("Death can not be before it was born.");
+                }
                 IsAlive = false;
                 death = value;
             } 
