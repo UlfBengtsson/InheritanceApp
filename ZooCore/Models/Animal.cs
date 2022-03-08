@@ -4,8 +4,11 @@ namespace ZooCore.Models
 {
     public abstract class Animal
     {
-        public string Name { get; set; }
+        private readonly int id;
 
+        public int Id { get { return id; } }
+        public string Name { get; set; }
+        public string Breed { get; set; }
         public DateTime Birth { get; set; }
 
         private DateTime death;
@@ -21,15 +24,16 @@ namespace ZooCore.Models
 
         public bool IsAlive { get; private set; }
 
-        public Animal()
+        public Animal(int id)
         {
+            this.id = id;
             IsAlive = true;
         }
-        public Animal(string name) : this()
+        public Animal(int id, string name) : this(id)
         {
             Name = name;
         }
-        public Animal(string name, string birthDate) : this(name)
+        public Animal(int id, string name, string birthDate) : this(id, name)
         {
             Birth = DateTime.Parse(birthDate);
         }
@@ -41,14 +45,14 @@ namespace ZooCore.Models
                     (IsAlive ? DateTime.Now : Death)
                                                      - Birth).Ticks
                 );
-            return $"Age: {age.Year}";
+            return $"Age: {age.Year - 1}";//computer counts year zero, people tend to not so minus 1 year to counter the diffreance.
         }
 
         public abstract string Info();
 
         public override string ToString()
         {
-            return $"Animal: {Name} - Birth: {Birth.ToShortDateString()} - {Age()}";
+            return $"Animal {id}: {Name} - Birth: {Birth.ToShortDateString()} - {Age()}";
         }
     }
 }

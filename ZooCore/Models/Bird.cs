@@ -8,7 +8,7 @@ namespace ZooCore.Models
     {
         public double WingSpan { get; set; }
         public bool CanFly { get; set; }
-        public Bird(string name, string birthDate, double wingSpan, bool canFly) : base(name, birthDate)
+        public Bird(int id, string name, string birthDate, double wingSpan, bool canFly) : base(id, name, birthDate)
         {
             WingSpan = wingSpan;
             CanFly = canFly;

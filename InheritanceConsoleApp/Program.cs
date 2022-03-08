@@ -9,12 +9,12 @@ namespace InheritanceConsoleApp
     {
         static void Main(string[] args)
         {
-            Dog dog = new Dog("Pluto", "2010-01-12", "234ASDY");
+            Dog dog = new Dog(1, "Pluto", "2010-01-12", "234ASDY");
 
             //Console.WriteLine(dog);
             //Console.WriteLine(dog.Age());
 
-            Bird segual = new Bird("Boye", "2020-05-21", 42.2, true);
+            Bird segual = new Bird(2, "Boye", "2020-05-21", 42.2, true);
 
             //Console.WriteLine(segual);
 
