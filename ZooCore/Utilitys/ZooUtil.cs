@@ -36,5 +36,45 @@ namespace ZooCore.Utilitys
 
             return birds;
         }
+
+        public static List<IDanger> FilterToOnlyDangerus(List<Animal> animals)
+        {
+            List<IDanger> dangerus = new List<IDanger>();
+
+            foreach (Animal animal in animals)
+            {
+                if (animal is IDanger)
+                {
+                    dangerus.Add(animal as IDanger);
+                }
+            }
+
+            return dangerus;
+        }
+
+        public static List<IDanger> FilterToOnlyDangerus(List<Tool> tools)
+        {
+            List<IDanger> dangerus = new List<IDanger>();
+
+            foreach (Tool tool in tools)
+            {
+                if (tool is IDanger)
+                {
+                    dangerus.Add(tool as IDanger);
+                }
+            }
+
+            return dangerus;
+        }
+
+        public static List<IDanger> FilterToOnlyDangerus(List<Tool> tools, List<Animal> animals)
+        {
+            List<IDanger> dangerus = new List<IDanger>();
+
+            dangerus.AddRange(FilterToOnlyDangerus(tools));
+            dangerus.AddRange(FilterToOnlyDangerus(animals));
+
+            return dangerus;
+        }
     }
 }
